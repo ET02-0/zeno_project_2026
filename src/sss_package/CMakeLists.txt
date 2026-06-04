@@ -6,6 +6,7 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   sensor_msgs
   marta_msgs
+  cv_bridge
   message_generation
 )
 
@@ -13,7 +14,6 @@ find_package(catkin REQUIRED COMPONENTS
 add_message_files(
   FILES
   GeolocatedObject.msg
-  GeolocatedObjectList.msg
   ImageMetadata.msg
 )
 
@@ -30,12 +30,14 @@ catkin_package(
   std_msgs
   sensor_msgs
   marta_msgs
+  cv_bridge
   message_runtime
 )
 
 catkin_install_python(PROGRAMS
-  scripts/image_creator.py
-  scripts/list_creator.py
-  scripts/geolocalization.py
+  scripts/waterfall_creator_node.py
+  scripts/object_classification_node.py
+  scripts/geolocalization_node.py
+  scripts/realtime_visualizer_node.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
